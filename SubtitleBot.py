@@ -9,16 +9,23 @@ for i in lst:
     url = url+i+"+"
     find += i.capitalize()+" "
 find += "English subtitle - Subscene"
+find_lst = find.split(" ")
 url = url + "english+subtitle+subscene"
 google_url_data = requests.get(url, allow_redirects=True)
 soup = BeautifulSoup(google_url_data.text,'html.parser')
 init_links = soup.find_all('a')
 sub_links = []
+
 for link in init_links:
-    for h3 in link.find_all('h3'):
-        if find in h3.text and "Ratings" not in h3.text:
-            sub_links.append(link)
-            break
+	for h3 in link.find_all('h3'):
+		cnt=0
+		for fi in find_lst:
+			if fi in h3.text:
+				cnt+=1
+		if cnt==len(find_lst):
+			if "Rating" not in h3.text:
+				sub_links.append(link)
+				break
 
 link = sub_links[0]['href'][7:]
 link = link.split("&")[0]
@@ -33,3 +40,4 @@ for div in data:
 
 r = requests.get(final_link, allow_redirects=True)
 open(find+'.zip', 'wb').write(r.content)
+print("Downloaded Successfully!")
