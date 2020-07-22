@@ -2,7 +2,8 @@
   <h1>Welcome to Subtitle Finder Bot<h1/>
   
   
-  <span>Language used</span> - ![Python Code Badge](https://img.shields.io/badge/-Python-blue?style=plastic&logo=Python&logoColor=white)
+  ![Python Code Badge](https://img.shields.io/badge/-Python-blue?style=plastic&logo=Python&logoColor=white) ![Python Code Badge](https://img.shields.io/badge/Bot-Subtitle-orange)
+  ![Python Code Badge](https://img.shields.io/badge/Downloads-.str-red)
 </div>
 
 
