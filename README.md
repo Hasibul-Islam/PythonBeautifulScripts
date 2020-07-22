@@ -7,5 +7,4 @@
 </div>
 
 
-# How to use it
-Clone the repo and run the .py file
+# How to use it - Clone the repo and run the .py file
