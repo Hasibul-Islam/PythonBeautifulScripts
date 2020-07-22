@@ -18,7 +18,6 @@ for i in lst:
     url = url+i+"+"
     find += i.capitalize()+" "
 bar.finish()
-
 try:
     find += "English subtitle - Subscene"
     url = url + "english+subtitle+subscene"
@@ -26,6 +25,7 @@ try:
     soup = BeautifulSoup(google_url_data.text,'html.parser')
     init_links = soup.find_all('a')
     sub_links = []
+    find_lst = find.split(" ")
 except:
     print('No result found')
     exit()
@@ -35,13 +35,29 @@ bar = progressbar.ProgressBar(maxval=len(init_links), widgets=[progressbar.Bar('
 bar.start()
 count = 0
 
+
+# for link in init_links:
+# 	for h3 in link.find_all('h3'):
+# 		cnt=0
+# 		for fi in find_lst:
+# 			if fi in h3.text:
+# 				cnt+=1
+# 		if cnt==len(find_lst):
+# 			if "Rating" not in h3.text:
+# 				sub_links.append(link)
+# 				break
 try:
     for link in init_links:
         bar.update(count+1)
         for h3 in link.find_all('h3'):
-            if find in h3.text and "Ratings" not in h3.text:
-                sub_links.append(link)
-                break
+        	cnt = 0
+        	for fi in find_lst:
+        		if fi in h3.text:
+        			cnt+=1
+        	if cnt==len(find_lst):
+        		if "Rating" not in h3.text:
+        			sub_links.append(link)
+        			break
 except:
     print('No result found')
     exit()
