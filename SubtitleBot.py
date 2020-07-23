@@ -36,16 +36,6 @@ bar.start()
 count = 0
 
 
-# for link in init_links:
-# 	for h3 in link.find_all('h3'):
-# 		cnt=0
-# 		for fi in find_lst:
-# 			if fi in h3.text:
-# 				cnt+=1
-# 		if cnt==len(find_lst):
-# 			if "Rating" not in h3.text:
-# 				sub_links.append(link)
-# 				break
 try:
     for link in init_links:
         bar.update(count+1)
